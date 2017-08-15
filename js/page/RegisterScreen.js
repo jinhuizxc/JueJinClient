@@ -6,41 +6,15 @@ import ImageButton from '../component/ImageButtonWithText';
 import Button from '../component/Button';
 import px2dp from '../util/px2dp';
 
-export default class SignUpPage extends Component {
-    constructor(props){
-        super(props);
-        this.handleBack = this._handleBack.bind(this);
-    }
+export default class RegisterScreen extends Component {
 
-    componentDidMount() {
-        // BackAndroid 被弃用替换为 BackHandler
-        // BackAndroid.addEventListener('hardwareBackPress', this.handleBack);
-        BackHandler.addEventListener('hardwareBackPress', this.handleBack);
-    }
-
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBack);
-    }
-
-    _handleBack() {
-        const navigator = this.props.navigator;
-        if (navigator && navigator.getCurrentRoutes().length > 1) {
-            navigator.pop()
-            return true;
-        }
-        return false;
-    }
-
-    _signupCallback(){
-
-    }
 
     render(){
+        const { navigate } = this.props.navigation;
         return(
             <View style={styles.view}>
                 <View style={styles.actionBar}>
                     <ImageButton
-                        onPress={this._handleBack.bind(this)}
                         icon="md-arrow-back"
                         color="white"
                         imgSize={px2dp(25)}
@@ -72,7 +46,7 @@ export default class SignUpPage extends Component {
                             placeholderTextColor="#c4c4c4"/>
                     </View>
                     <View style={{marginTop: px2dp(15), height: px2dp(40)}}>
-                        <Button text="注册" onPress={this._signupCallback.bind(this)}/>
+                        <Button text="注册" onPress={() => navigate('Login')}/>
                     </View>
                 </View>
             </View>

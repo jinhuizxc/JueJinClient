@@ -12,7 +12,7 @@ import TextButton from './js/component/TextButton';
 import ImageButton from './js/component/ImageButtonWithText';
 import TextDivider from './js/component/TextDivider';
 import px2dp from './js/util/px2dp';
-import LoginScreen from './js/page/LoginScreen'
+import RegisterScreen from './js/page/RegisterScreen'
 
 class HomeScreen extends React.Component {
     // static navigationOptions = {
@@ -54,7 +54,7 @@ class HomeScreen extends React.Component {
                     </View>
                     <View style={styles.textButtonLine}>
                         <TextButton text="忘记密码?" color="rgba(255,255,255,0.5)"/>
-                        <TextButton text="注册账号" onPress={() => navigate('Login')}/>
+                        <TextButton text="注册账号" onPress={() => navigate('Register')}/>
                     </View>
                 </View>
                 <View style={{flex: 1}}>
@@ -74,9 +74,10 @@ class HomeScreen extends React.Component {
 
 
 // 官方侧滑！
-const SimpleApp = StackNavigator({
+const JueJinClient = StackNavigator({
     Home: { screen: HomeScreen },
-    Login: {screen: LoginScreen},
+    Register: {screen: RegisterScreen},
+    Login: {screen: HomeScreen},
 });
 
 const styles = StyleSheet.create({
@@ -130,4 +131,4 @@ const styles = StyleSheet.create({
 
 });
 
-AppRegistry.registerComponent('JueJinClient', () => SimpleApp);
+AppRegistry.registerComponent('JueJinClient', () => JueJinClient);
